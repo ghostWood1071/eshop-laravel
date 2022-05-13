@@ -1,0 +1,121 @@
+@extends('_layout_admin')
+@section('content')
+<main ng-controller="category">
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Category management</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Category manager</li>
+        </ol>
+        <!-- <div class="card mb-4">
+            <div class="card-body">
+               
+            </div>
+        </div> -->
+        <div class="card mb-4">
+            <div class="card-header" style="display: flex; justify-content: space-between;">
+                <div>
+                    <i class="fa fa-table me-1"></i>
+                    Category list
+                </div>
+                <div>
+                    <button class='btn btn-primary' ng-click="openModal(-1,-1)">Create</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Index</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr ng-repeat = "c in categories">
+                            <td style="width: 30px; text-align=center;">@{{$index+1}}</td>
+                            <td>@{{c.name}}</td>
+                            <td>@{{c.description}}</td>
+                            <td style="width:100px; font-size: 16px; text-align:center">
+                                <a ng-click="openModal(c.id, $index)" href="" style="margin-right:10px">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a ng-click="openConfirm(c.id, $index)" href="">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">@{{title}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <div>
+                                        <input id="name" type="text" ng-model="cate.name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="des">Description:</label>
+                                    <div>
+                                        <textarea id="des" style="width:100%; height: 100px;" ng-model="cate.description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Xác nhận</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            
+                        <p>bạn có muốn xóa không?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" ng-click="delete()">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@stop
+
+@section('js')
+    <script src="/assets/admin/js/category.module.js"></script>
+@stop
