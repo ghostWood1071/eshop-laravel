@@ -12,11 +12,14 @@ app.controller('index', ($scope, $http)=>{
     $scope.price = 0;
 
     $scope.getTrending =(cate_id)=>{
+        let url = 'http://127.0.0.1:8000/api/shopping/get-trending/'+cate_id+"/"+8;
+        console.log(url);
         $http({
             method: 'GET',
-            url: 'http://127.0.0.1:8000/api/shopping/get-trending/'+cate_id+"/"+8,
+            url: url,
         }).then((res)=>{
             $scope.trends = res.data;
+            console.log(res.data);
         }, (err)=>{
             console.log(err);
         })

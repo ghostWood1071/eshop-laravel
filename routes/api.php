@@ -15,6 +15,7 @@ use App\Http\Controllers\api\ImportDetailController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\FileController;
 use App\Http\Controllers\api\ShoppingController;
+use App\Http\Controllers\api\DashboardController;
 
 Route::resource('category', CategoryController::class);
 Route::resource('product', ProductController::class);
@@ -40,4 +41,9 @@ Route::get('/shopping/get-colors/{id}',[ShoppingController::class, 'getColors'])
 Route::get('/shopping/get-sizes/{id}',[ShoppingController::class, 'getSizes']);
 Route::get('/shopping/get-images/{id}',[ShoppingController::class, 'getImages']);
 Route::get('/shopping/get-price/{id}',[ShoppingController::class, 'getPrice']);
+Route::post('/shopping/create-user',[ShoppingController::class, 'createUser']);
+
+Route::get('/dashboard/get-year-profit/{n}',[DashBoardController::class, 'getYearProfit']);
+Route::get('/dashboard/get-month-profit/{year}',[DashBoardController::class, 'getMonhtProfit']);
+Route::get('/dashboard/get-loyal-customer/{n}',[DashBoardController::class, 'getLoyalCustomer']);
 

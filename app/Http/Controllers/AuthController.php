@@ -32,7 +32,7 @@ class AuthController extends Controller
             if($role == 0)
                 return redirect('admin');
             else if($role==1)
-                return redirect('product');
+                return redirect('admin/product');
             else if($role==2)
                 return redirect('/');
         }
@@ -45,7 +45,7 @@ class AuthController extends Controller
             if($role == 0)
                 return redirect('admin');
             else if($role==1)
-                return redirect('product');
+                return redirect('admin/product');
             else if($role==2)
                 return redirect('/');
         }
@@ -55,5 +55,13 @@ class AuthController extends Controller
     public function logout(Request $request){
         $request->session()->forget(['user_id', 'role']);
         return redirect('/');
+    }
+
+    public function getUserName(Request $request){
+        if ($request->session()->exists('user_id') && $request->session()->exists('role')) {
+            $id = $request->session()->get('user_id');
+            $user = User::where('active',1)->where('id', $id)->first();
+            return $user->fullname;
+        }
     }
 }

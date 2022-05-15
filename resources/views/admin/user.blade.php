@@ -1,11 +1,11 @@
 @extends('_layout_admin')
 @section('content')
-<main ng-controller="order">
+<main ng-controller="user">
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Order management</h1>
+        <h1 class="mt-4">Staff management</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Order manager</li>
+            <li class="breadcrumb-item active">Staff manager</li>
         </ol>
         <!-- <div class="card mb-4">
             <div class="card-body">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div>
-                    <button class='btn btn-primary' ng-click="save()">Save</button>
+                    <button class='btn btn-primary' ng-click="openModal(-1,-1)">Create</button>
                 </div>
             </div>
             <div class="card-body">
@@ -38,36 +38,24 @@
                     <thead>
                         <tr>
                             <th>Index</th>
-                            <th>Customer</th>
-                            <th>Order date</th>
-                            <th>Total price</th>
-                            <th>Shipping address</th>
-                            <th>Payment</th>
-                            <th>Status</th>
+                            <th>Full Name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat = "o in orders | filter: txtSearch">
+                        <tr ng-repeat = "c in users | filter: txtSearch">
                             <td style="width: 30px; text-align=center;">@{{$index+1}}</td>
-                            <td>@{{o.user.fullname}}</td>
-                            <td>@{{o.order_date}}</td>
-                            <td style="text-align:right">@{{o.total_price | number}}</td>
-                            <td>@{{o.address}}</td>
-                            <td>@{{getPayment(o.payment)}}</td>
-                            <!-- <td>@{{getStatus(o.status)}}</td> -->
-                            <td>
-                                <select ng-model="o.status" ng-change="change(o)">
-                                    <option value="0">ordered</option>
-                                    <option value="1">preparing</option>
-                                    <option value="2">transporting</option>
-                                    <option value="3">shipping</option>
-                                    <option value="4">successful delivery</option>
-                                </select>
-                            </td>
+                            <td>@{{c.fullname}}</td>
+                            <td>@{{c.address}}</td>
+                            <td>@{{c.phone}}</td>
                             <td style="width:100px; font-size: 16px; text-align:center">
-                                <a ng-click="openModal($index)" href="" style="margin-right:10px">
-                                    <i class="fa fa-eye"></i>
+                                <a ng-click="openModal(c.id, $index)" href="" style="margin-right:10px">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a ng-click="openConfirm(c.id, $index)" href="">
+                                    <i class="fa fa-trash"></i>
                                 </a>
                             </td>
                         </tr>
@@ -78,44 +66,45 @@
                     <ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" ng-change="load()"></ul>
                 </div>
                 <div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Order details</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">@{{title}}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <div class="container-fluid">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col">Index</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Color</th>
-                                            <th scope="col">Size</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Discount</th>
-                                            <th scope="col">Unit price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="d in details">
-                                            <th scope="row">@{{$index+1}}</th>
-                                            <td>@{{d.name}}</td>
-                                            <td><div style="background-color: @{{d.value}}; width: 20px; height: 20px;"></div></td>
-                                            <td style="text-align:right">@{{d.size_id}}</td>
-                                            <td style="text-align:right">@{{d.quantity}}</td>
-                                            <td style="text-align:right">@{{d.discount}}</td>
-                                            <td style="text-align:right">@{{d.unit_price}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <div>
+                                        <input id="name" type="text" ng-model="user.fullname">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="des">Address: </label>
+                                    <div>
+                                        <input type="text" ng-model="user.address">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="des">Phone: </label>
+                                    <div>
+                                        <input type="text" ng-model="user.phone">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="des">Account: </label>
+                                    <div>
+                                        <input type="text" ng-model="user.account">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
                         </div>
                         </div>
                     </div>
@@ -148,5 +137,5 @@
 @stop
 
 @section('js')
-    <script src="/assets/admin/js/order.module.js"></script>
+    <script src="/assets/admin/js/user.module.js"></script>
 @stop

@@ -24,8 +24,19 @@
         <div class="card mb-4">
             <div class="card-header" style="display: flex; justify-content: space-between;">
                 <div>
-                    <i class="fa fa-table me-1"></i>
-                    Product list
+                    <div>
+                        <input type="text" ng-model="txtSearch" style="height:36px;">
+                        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                    <div style="margin-top: 20px">
+                        <select ng-model="maxSize" ng-change="load()">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                        </select>
+                        items per page
+                    </div>
                 </div>
                 <div>
                     <button class='btn btn-primary' ng-click="openModal(-1,-1)">Create</button>
@@ -45,7 +56,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat = "p in products">
+                        <tr ng-repeat = "p in products | filter: txtSearch">
                             <td style="width: 30px; text-align:center;">@{{$index+1}}</td>
                             <td><img style="width:100px;" src="/upload/@{{p.image}}" alt="" srcset=""></td>
                             <td>@{{p.name}}</td>
@@ -64,7 +75,9 @@
                         
                     </tbody>
                 </table>
-
+                <div class="paginate">
+                    <ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" ng-change="load()"></ul>
+                </div>
                 <!-- create-update modal -->
                 <div class="modal fade bd-example-modal-lg" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">

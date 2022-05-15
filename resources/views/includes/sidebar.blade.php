@@ -29,11 +29,18 @@
                     Order manager
                     <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
                 </a>
+
+                <a class="nav-link collapsed" href="/admin/user" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                    
+                    <div class="sb-nav-link-icon"><i class="fa fa-users" aria-hidden="true"></i></div>
+                    Staff manager
+                    <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+                </a>
             </div>
         </div>
-        <div class="sb-sidenav-footer">
+        <div class="sb-sidenav-footer" ng-controller="sidebar">
             <div class="small">Logged in as:</div>
-            Start Bootstrap
+            @{{fullname}}
         </div>
     </nav>
 </div>

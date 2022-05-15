@@ -66,4 +66,21 @@ app.controller('login', ($scope, $http)=>{
             toastr.warning('You must login before make a payment');
         })
     }
+
+    $scope.create = ()=>{
+        $http({
+            method: 'POST',
+            url: 'http://127.0.0.1:8000/api/shopping/create-user',
+            data: $scope.user
+        }).then((res)=>{
+            if(res.data == 1){
+                alert("your account is created");
+                $scope.user = null;
+            } else {
+                alert("account has existed");
+            }
+        }, (err)=>{
+            console.log(err);
+        })
+    }
 });

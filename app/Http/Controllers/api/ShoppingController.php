@@ -9,7 +9,9 @@ use App\Models\Product;
 use App\Models\Color;
 use App\Models\Price;
 use App\Models\Size;
+use App\Models\User;
 use App\Models\Image;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -27,18 +29,17 @@ class ShoppingController extends Controller
     } 
 
     public function getSales($n){
-        return DB::select('CALL get_sales(?)', array($n));
+        $colors = Color::where('active', 1)->where('discount', '>', '0')->get();
+        foreach($colors as $color){
+            $color->product;
+            $color->price;
+            $color->image;
+        }
+        return $colors;
     }
 
     public function getHot($cate_id, $n){
-        return DB::select('CALL get_trending(?, ?)',array($cate_id, $n));
-        // $colors = Color::where('active', 1)->get();
-        // foreach($colors as $color){
-        //     $product = $color->product->where('category_id', $cate_id);
-        //     $color->image;
-        //     $color->price;
-        // }
-        // return $colors;
+        return DB::select('CALL get_trending(?, ?)',array($cate_id=='null'?null:$cate_id, $n));
     }
 
     public function getNew($n){
@@ -82,5 +83,21 @@ class ShoppingController extends Controller
         return Price::where('active',1)->where('color_id', $id)->get();
     }
 
+    public function createUser(Request $request){
+        $check = User::where('active', 1)->where('account', $request->account)->first();
+        if($check != null)
+            return false;
+        $user = new User;
+        $user->id = Str::uuid()->toString();
+        $user->fullname = $request->fullname;
+        $user->account = $request->account;
+        $user->password = $request->password; 
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->role = 2;
+        $user->active = 1;
+        $user->save();
+        return true;
+    }
 
 }

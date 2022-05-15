@@ -23,6 +23,9 @@ Route::get('/admin/import', function () {
     return view('admin.import');
 })->name('import')->middleware('auth-staff');
 
+Route::get('/admin/user', function () {
+    return view('admin.user');
+})->name('user')->middleware('auth-admin');
 
 //shopping
 Route::get('/', function () {
@@ -51,3 +54,8 @@ Route::get('/authenthicate/auth', [AuthController::class, 'authenthicate']);
 Route::post('/authenthicate/login', [AuthController::class, 'login']);
 Route::get('/auththenthicate/redirect', [AuthController::class, 'redirect']);
 Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('/username', [AuthController::class, 'getUserName']);
+
+Route::get('/signin',function(){
+    return view('shop.signin');
+});

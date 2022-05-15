@@ -19,6 +19,7 @@ app.controller('cart', ($scope)=>{
     
 
     $scope.addCart = (product, color, size, image, quantity)=>{
+        console.log(color);
         let item = {
             color_id: color.id,
             color_name: color.name,
@@ -30,7 +31,8 @@ app.controller('cart', ($scope)=>{
             quantity: quantity,
             color: color.value,
             price: color.price[0].sold_value,
-            discount: color.discount
+            discount: color.discount,
+            price_id: color.price[0].id
         };
         let cartItem = $scope.carts.find(x=>x.color_id==item.color_id && x.size_id == item.size_id);
         if(cartItem == undefined){

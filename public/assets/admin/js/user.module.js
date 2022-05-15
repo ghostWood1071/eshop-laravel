@@ -1,15 +1,14 @@
-app.controller('category', ($scope, $http)=>{
-    $scope.categories = [];
-
+app.controller('user', ($scope, $http)=>{
+    $scope.users = [];
     $scope.load = ()=>{
         let start = ($scope.currentPage-1)*$scope.maxSize;
         let end = start + $scope.maxSize;
-        $scope.categories = $scope.data.slice(start, end);
+        $scope.users = $scope.data.slice(start, end);
     }
 
     $http({
         method: 'GET',
-        url: 'http://127.0.0.1:8000/api/category'
+        url: 'http://127.0.0.1:8000/api/user'
     }).then((res)=>{
         $scope.data = res.data;
         $scope.currentPage = 1;
@@ -24,12 +23,11 @@ app.controller('category', ($scope, $http)=>{
         if($scope.state == "create"){
             $http({
                 method: 'POST',
-                url: 'http://127.0.0.1:8000/api/category',
-                'content-type': 'application/json',
-                data: $scope.cate
+                url: 'http://127.0.0.1:8000/api/user',
+                header: {'content-type': 'application/json'},
+                data: $scope.user
             }).then((res)=>{
-
-                $scope.categories.push(res.data);
+                $scope.users.push(res.data);
                 $("#updatemodal").modal('hide');
             }, (err)=>{
                 console.log(err);
@@ -37,11 +35,11 @@ app.controller('category', ($scope, $http)=>{
         } else{
             $http({
                 method: 'PUT',
-                url: 'http://127.0.0.1:8000/api/category/'+$scope.selected,
-                'content-type': 'application/json',
-                data: $scope.cate
+                url: 'http://127.0.0.1:8000/api/user/'+$scope.selected,
+                header: {'content-type': 'application/json'},
+                data: $scope.user
             }).then((res)=>{
-                $scope.categories[$scope.index] = res.data;
+                $scope.users[$scope.index] = res.data;
                 $("#updatemodal").modal('hide');
             }, (err)=>{
                 console.log(err);
@@ -55,9 +53,9 @@ app.controller('category', ($scope, $http)=>{
             $scope.selected = id;
             $scope.index = index;
             $scope.state = "update";
-            $scope.cate = Object.assign({},$scope.categories[index]);
+            $scope.user = Object.assign({},$scope.users[index]);
         } else {
-            $scope.cate = null;
+            $scope.user = null;
             $scope.title = "Create new";
             $scope.state = "create"
         }
@@ -73,9 +71,9 @@ app.controller('category', ($scope, $http)=>{
     $scope.delete = ()=>{
         $http({
             method: 'DELETE',
-            url: 'http://127.0.0.1:8000/api/category/'+$scope.selected,
+            url: 'http://127.0.0.1:8000/api/user/'+$scope.selected,
         }).then((res)=>{
-            $scope.categories.splice($scope.index, 1);
+            $scope.users.splice($scope.index, 1);
             $("#deletemodal").modal('hide');
         }, (err)=>{
 

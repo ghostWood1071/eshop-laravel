@@ -6,12 +6,28 @@ app.controller('import', ($scope, $http)=>{
     $scope.colors = [];
     $scope.detailUploads = [];
 
+    $scope.load = ()=>{
+        let start = ($scope.currentPage-1)*$scope.maxSize;
+        let end = start + $scope.maxSize;
+        $scope.imports = $scope.data.slice(start, end);
+    }
+
+    $scope.loadPr = ()=>{
+        let start = ($scope.pcurrentPage-1)*$scope.pmaxSize;
+        let end = start + $scope.pmaxSize;
+        $scope.products = $scope.productData.slice(start, end);
+    }
     //get list imports
     $http({
         method: 'GET',
         url: 'http://127.0.0.1:8000/api/import'
     }).then((res)=>{
-        $scope.imports = res.data;
+        //$scope.imports = res.data;
+        $scope.data = res.data;
+        $scope.currentPage = 1;
+        $scope.maxSize = 10+"";
+        $scope.totalItems = res.data.length;
+        $scope.load();
     }, (err)=>{
         console.log(err);
     });
@@ -31,7 +47,11 @@ app.controller('import', ($scope, $http)=>{
         method: 'GET',
         url: 'http://127.0.0.1:8000/api/product/create'
     }).then((res)=>{
-        $scope.products = res.data;
+        $scope.productData = res.data;
+        $scope.pcurrentPage = 1;
+        $scope.pmaxSize = 20+"";
+        $scope.ptotalItems = res.data.length;
+        $scope.loadPr();
     }, (err)=>{
         console.log(err);
     });

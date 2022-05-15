@@ -9,6 +9,11 @@ app.controller('product', ($scope, $http)=>{
     $scope.selectedColorIndex = -1;
     $scope.images = [];
 
+    $scope.load = ()=>{
+        let start = ($scope.currentPage-1)*$scope.maxSize;
+        let end = start + $scope.maxSize;
+        $scope.products = $scope.data.slice(start, end);
+    }
     
 
     //load product
@@ -17,7 +22,11 @@ app.controller('product', ($scope, $http)=>{
             method: 'GET',
             url: 'http://127.0.0.1:8000/api/product'
         }).then((res)=>{
-            $scope.products = res.data;
+            $scope.data = res.data;
+            $scope.currentPage = 1;
+            $scope.totalItems = $scope.data.length;
+            $scope.maxSize = 10+"";
+            $scope.load();
         }, (err)=>{
             console.log(err);
         });

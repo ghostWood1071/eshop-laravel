@@ -52,7 +52,7 @@
                     <div class="nav-main">
                         <!-- Tab Nav -->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li ng-repeat="c in categories" class="nav-item"><a class="nav-link @{{$index==0?'active':''}}" data-toggle="tab" href="" ng-click="getTrendings(c.id)" role="tab">@{{c.name}}</a></li>
+                            <li ng-repeat="c in categories" class="nav-item"><a class="nav-link @{{$index==0?'active':''}}" data-toggle="tab" href="" ng-click="getTrending(c.id)" role="tab">@{{c.name}}</a></li>
                         </ul>
                         <!--/ End Tab Nav -->
                     </div>
@@ -64,22 +64,23 @@
                                     <div class="col-xl-3 col-lg-4 col-md-4 col-12" ng-repeat="t in trends">
                                         <div class="single-product">
                                             <div class="product-img">
-                                                <a href="product-details.html">
-                                                    <img class="default-img" src="/upload/@{{t.img}}" alt="#">
+                                                <a href="/product-detail?id=@{{t.id}}&color_id=@{{t.color_id}}">
+                                                    <img class="default-img" src="/upload/@{{t.image}}" alt="#">
                                                 </a>
                                                 <div class="button-head">
                                                     <div class="product-action">
                                                         
                                                     </div>
                                                     <div class="product-action-2">
-                                                        <a title="Add to cart" href="#">Add to cart</a>
+                                                        <a title="Add to cart" href="/product-detail?id=@{{t.id}}&color_id=@{{t.color_id}}">Add to cart</a>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="product-content">
-                                                <h3><a href="product-details.html">@{{t.name}}</a></h3>
+                                                <h3><a href="/product-detail?id=@{{t.id}}&color_id=@{{t.color_id}}">@{{t.name}}-@{{t.color_name}}</a></h3>
+                                                <div class="color" style="background-color: @{{t.color_value}}; width: 20px; height: 20px"></div>
                                                 <div class="product-price">
-                                                    <span>@{{t.sold_value}} VND</span>
+                                                    <span>@{{t.sold_value | number}} VND</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,18 +157,18 @@
                     </div>
                 </div>
                 <!-- Start Single List  -->
-                <div class="single-list" ng-repeat = "s in sales">
+                <div class="single-list" ng-repeat="n in sales">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="list-image overlay">
-                                <img src="/upload/@{{s.img}}" alt="#">
-                                <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                                <img src="/upload/@{{n.image[0].name}}" alt="#">
+                                <a href="/product-detail?id=@{{n.product_new.id}}&color_id=@{{n.id}}" class="buy"><i class="fa fa-shopping-bag"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 no-padding">
                             <div class="content">
-                                <h4 class="title"><a href="#">@{{s.name}}</a></h4>
-                                <p class="price with-discount">@{{s.sold_value}}</p>
+                                <h5 class="title"><a href="/product-detail?id=@{{n.product_new.id}}&color_id=@{{n.id}}">@{{n.product_new.name}}-@{{n.name}}</a></h5>
+                                <p class="price with-discount">@{{n.price[0].sold_value | number}} VND</p>
                             </div>
                         </div>
                     </div>
@@ -188,13 +189,13 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="list-image overlay">
-                                <img src="/upload/@{{t.img}}" alt="#">
-                                <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                                <img src="/upload/@{{t.image}}" alt="#">
+                                <a href="/product-detail?id=@{{t.id}}&color_id=@{{t.color_id}}" class="buy"><i class="fa fa-shopping-bag"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 no-padding">
                             <div class="content">
-                                <h5 class="title"><a href="#">@{{t.name}}</a></h5>
+                                <h5 class="title"><a href="/product-detail?id=@{{t.id}}&color_id=@{{t.color_id}}">@{{t.name}}</a></h5>
                                 <p class="price with-discount">@{{t.sold_value | number}} VND</p>
                             </div>
                         </div>
@@ -217,12 +218,12 @@
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="list-image overlay">
                                 <img src="/upload/@{{n.image[0].name}}" alt="#">
-                                <a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                                <a href="/product-detail?id=@{{n.product_new.id}}&color_id=@{{n.id}}" class="buy"><i class="fa fa-shopping-bag"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 no-padding">
                             <div class="content">
-                                <h5 class="title"><a href="#">@{{n.product_new.name}}-@{{n.name}}</a></h5>
+                                <h5 class="title"><a href="/product-detail?id=@{{n.product_new.id}}&color_id=@{{n.id}}">@{{n.product_new.name}}-@{{n.name}}</a></h5>
                                 <p class="price with-discount">@{{n.price[0].sold_value | number}} VND</p>
                             </div>
                         </div>

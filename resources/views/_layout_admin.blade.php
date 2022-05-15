@@ -10,6 +10,13 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="/js/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css">
         <link href="/js/toastr/toastr.min.css" rel="stylesheet" type="text/css">
+        <style>
+            .paginate{
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+        </style>
         @yield('css')
     </head>
     <body class="sb-nav-fixed" >
@@ -27,6 +34,7 @@
         </div>
         <script src="/assets/admin/js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="/assets/admin/js/datatables-simple-demo.js"></script>
         <script src="/js/jquery-3.6.0.min.js"></script>
         <script src="/js/jquery-ui/jquery-ui.js"></script>
@@ -34,6 +42,8 @@
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/toastr/toastr.min.js"></script>
         <script src="/js/angular.min.js"></script>
+        <script src="/js/angular-chart.min.js"></script>
+        <script src="/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
         <script src="/assets/admin/js/main.js"></script>
         @yield('js')
     </body>

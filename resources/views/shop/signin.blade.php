@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign in</title>
+    
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
@@ -107,26 +108,24 @@
     </style>
     <script src="/assets/shop/js/jquery.min.js"></script>
     <script src="/js/angular.min.js"></script>
+    <link rel="stylesheet" href="/assets/admin/css/bootstrap.min.css">
 </head>
 <body ng-app="shop">
-    <div class="login-page">
+    <div class="login-page" ng-controller="login">
         <div class="form">
-            <form class="register-form">
-                <input type="text" placeholder="name"/>
-                <input type="password" placeholder="password"/>
-                <input type="text" placeholder="email address"/>
-                <button>create</button>
-                <p class="message">Already registered? <a href="#">Sign In</a></p>
-            </form>
-            <div class="login-form" ng-controller="login">
-                <input type="text" placeholder="account" name="account" ng-model="account"/>
-                <input type="password" placeholder="password" name="password" ng-model="password"/>
-                <button ng-click="login()">login</button>
-                <p class="message">Not registered? <a href="/signin">Create an account</a></p>
+            <div class="">
+                <input type="text" placeholder="account" ng-model="user.account"/>
+                <input type="password" placeholder="password" ng-model="user.password"/>
+                <input type="text" placeholder="fullname" ng-model = "user.fullname"/>
+                <input type="text" placeholder="address" ng-model = "user.address"/>
+                <input type="text" placeholder="phone" ng-model="user.phone"/>
+                <button ng-click="create()">create</button>
+                <p class="message">Already registered? <a href="/login">Sign In</a></p>
             </div>
         </div>
     </div>
     <script src="/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+    <script src="/js/toastr/toastr.min.js"></script>
     <script src="/assets/shop/module/main.app.js"></script>
 </body>
 </html>
