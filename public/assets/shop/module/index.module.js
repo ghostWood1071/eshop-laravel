@@ -55,6 +55,7 @@ app.controller('index', ($scope, $http)=>{
         url: 'http://127.0.0.1:8000/api/shopping/get-sales/'+8
     }).then((res)=>{
         $scope.sales = res.data;
+        console.log(res.data);
     }, (err)=>{
         console.log(err);
     });

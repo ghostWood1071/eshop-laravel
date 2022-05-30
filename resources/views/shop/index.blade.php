@@ -162,12 +162,12 @@
                         <div class="col-lg-6 col-md-6 col-12">
                             <div class="list-image overlay">
                                 <img src="/upload/@{{n.image[0].name}}" alt="#">
-                                <a href="/product-detail?id=@{{n.product_new.id}}&color_id=@{{n.id}}" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                                <a href="/product-detail?id=@{{n.product.id}}&color_id=@{{n.id}}" class="buy"><i class="fa fa-shopping-bag"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 no-padding">
                             <div class="content">
-                                <h5 class="title"><a href="/product-detail?id=@{{n.product_new.id}}&color_id=@{{n.id}}">@{{n.product_new.name}}-@{{n.name}}</a></h5>
+                                <h5 class="title"><a href="/product-detail?id=@{{n.product.id}}&color_id=@{{n.id}}">@{{n.product.name}}-@{{n.name}}</a></h5>
                                 <p class="price with-discount">@{{n.price[0].sold_value | number}} VND</p>
                             </div>
                         </div>

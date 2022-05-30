@@ -28,8 +28,9 @@ app.controller('category', ($scope, $http)=>{
                 'content-type': 'application/json',
                 data: $scope.cate
             }).then((res)=>{
-
-                $scope.categories.push(res.data);
+                $scope.data.push(res.data);
+                $scope.totalItems = $scope.data.length;
+                $scope.load();
                 $("#updatemodal").modal('hide');
             }, (err)=>{
                 console.log(err);
@@ -75,7 +76,9 @@ app.controller('category', ($scope, $http)=>{
             method: 'DELETE',
             url: 'http://127.0.0.1:8000/api/category/'+$scope.selected,
         }).then((res)=>{
-            $scope.categories.splice($scope.index, 1);
+            $scope.data.splice($scope.index, 1);
+            $scope.totalItems = $scope.data.length;
+            $scope.load();
             $("#deletemodal").modal('hide');
         }, (err)=>{
 

@@ -59,7 +59,7 @@ app.controller('checkout', ($scope, $http)=>{
                 toastr.success('create order successfully');
                 $scope.carts=[];
                 $scope.payment();
-                sessionStorage.setItem('carts', JSON.stringify($scope.carts));
+                localStorage.setItem('carts', JSON.stringify($scope.carts));
             }, (err)=>{
                 console.log(err);
             })

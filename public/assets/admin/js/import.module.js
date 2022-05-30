@@ -13,8 +13,8 @@ app.controller('import', ($scope, $http)=>{
     }
 
     $scope.loadPr = ()=>{
-        let start = ($scope.pcurrentPage-1)*$scope.pmaxSize;
-        let end = start + $scope.pmaxSize;
+        let start = ($scope.pcurrentPage-1)*10;
+        let end = start + 10;
         $scope.products = $scope.productData.slice(start, end);
     }
     //get list imports
@@ -68,10 +68,11 @@ app.controller('import', ($scope, $http)=>{
             for(var d of res.data){
                 detail = d;
                 detail.colors = JSON.parse(d.colors);
-                let index = $scope.products.findIndex(x=>x.product.id == detail.product_id);
-                $scope.products[index].check = true;
+                let index = $scope.productData.findIndex(x=>x.product.id == detail.product_id);
+                $scope.productData[index].check = true;
                 details.push(detail);
             }
+            $scope.loadPr();
             $scope.details = details;
         }, (err)=>{
             console.log(err);
@@ -187,7 +188,9 @@ app.controller('import', ($scope, $http)=>{
                 }
             }).then((res)=>{
                 console.log(res.data);
-                $scope.imports.push(res.data);
+                $scope.data.push(res.data);
+                $scope.totalItems = $scope.data.length;
+                $scope.load();
                 $("#updatemodal").modal('hide');
             }, (err)=>{
                 console.log(err);
@@ -253,7 +256,9 @@ app.controller('import', ($scope, $http)=>{
             method: 'DELETE',
             url: 'http://127.0.0.1:8000/api/import/'+$scope.selected,
         }).then((res)=>{
-            $scope.imports.splice($scope.index, 1);
+            $scope.data.splice($scope.index, 1);
+            $scope.totalItems = $scope.data.length;
+            $scope.load();
             $("#deletemodal").modal('hide');
         }, (err)=>{
             console.log(err);

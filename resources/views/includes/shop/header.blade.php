@@ -31,7 +31,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo" style="margin-top: 0px;">
-                        <a href="index.html"><img src="/upload/Logo_Ananas_Header.svg" alt="logo"></a>
+                        <a href="/"><img src="/upload/Logo_Ananas_Header.svg" alt="logo"></a>
                     </div>
                     <!--/ End Logo -->
                     <!-- Search Form -->

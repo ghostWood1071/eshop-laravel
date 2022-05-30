@@ -44,13 +44,13 @@ class ShoppingController extends Controller
 
     public function getNew($n){
         // return DB::select('CALL get_new_products(?)', array($n));
-        $colors = Color::where('active',1)->get();
+        $colors = Color::where('active',1)->limit($n)->get();
         foreach($colors as $color){
             $color->productNew;
             $color->image;
             $color->price;
         }
-        return $colors;
+        return $colors->where('productNew', '!=', null);
     }
 
     public function getProduct($id){

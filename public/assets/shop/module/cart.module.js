@@ -45,6 +45,7 @@ app.controller('cart', ($scope)=>{
             cartItem.quantity+=quantity;
         }
         localStorage.setItem('carts', JSON.stringify($scope.carts));
+        toastr.success("product is added to your cart");
         
     }
 

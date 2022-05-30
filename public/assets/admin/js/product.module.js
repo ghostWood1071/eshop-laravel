@@ -145,8 +145,10 @@ app.controller('product', ($scope, $http)=>{
             method: 'DELETE',
             url: 'http://127.0.0.1:8000/api/product/'+$scope.selected,
         }).then((res)=>{
-            $scope.products.splice($scope.index, 1);
+            $scope.data.splice($scope.index, 1);
             $("#deletemodal").modal('hide');
+            $scope.totalItems = $scope.data.length;
+            $scope.load();
         }, (err)=>{
             console.log(err);
         });
@@ -179,11 +181,13 @@ app.controller('product', ($scope, $http)=>{
                 fs: files,
             }
         }).then((res)=>{
-            $scope.products.push(res.data[0]);
+            $scope.data.push(res.data[0]);
             $scope.colors = [];
             $scope.colorFiles=[];
             $scope.selectedColorFiles = [];
             $scope.formData = new FormData();
+            $scope.totalItems = $scope.data.length;
+            $scope.load();
             $("#updatemodal").modal('hide');
         }, (err)=>{
             console.log(err);

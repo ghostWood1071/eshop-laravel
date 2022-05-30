@@ -29,7 +29,7 @@ class Color extends Model
 
     public function productNew(){
         $date_start = Carbon::now()->startOfMonth()->subMonth(3);
-        $date_end = Carbon::now()->startOfMonth();
+        $date_end = Carbon::now()->endOfMonth();
         return $this->belongsTo(Product::class, 'product_id', 'id')->where('active', 1)->whereBetween('release_date', [$date_start, $date_end]);
     }
 
