@@ -19,40 +19,9 @@ class ImportDetailController extends Controller
     {
         return ImportDetail::where('active', 1)->get();
     }
-
-    
-    public function create()
-    {
-        //
-    }
-
-    
-    public function store(Request $request)
-    {
-        
-    }
-
     
     public function show($id)
     {
         return DB::select('CALL get_import_details(?)',array($id));
-    }
-
-    
-    public function edit($id)
-    {
-        //
-    }
-
-    
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    
-    public function destroy($id)
-    {
-        //
     }
 }

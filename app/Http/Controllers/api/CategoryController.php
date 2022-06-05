@@ -51,21 +51,5 @@ class CategoryController extends Controller
         return $cate;
     }
 
-    public function create()
-    {
-        //
-    }
-    
-    public function show($id)
-    {
-        //
-    }
-
-    
-    public function edit($id)
-    {
-        //
-    }
-
     
 }

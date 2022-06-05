@@ -15,7 +15,6 @@ app.controller('product', ($scope, $http)=>{
         $scope.products = $scope.data.slice(start, end);
     }
     
-
     //load product
     $scope.loadProduct = ()=>{
         $http({
@@ -265,7 +264,7 @@ app.controller('product', ($scope, $http)=>{
             console.log(err);
         })
     }
-    //update color
+    //update color 
     $scope.updateColor =()=>{
         if($scope.state == "update"){   
             let files = $('#file')[0].files;

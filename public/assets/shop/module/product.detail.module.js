@@ -28,6 +28,7 @@ app.controller('product_detail', ($scope, $http)=>{
         });
     }
 
+    //get product
     $http({
         method: 'GET',
         url: 'http://127.0.0.1:8000/api/shopping/get-product/'+productId 
@@ -38,6 +39,7 @@ app.controller('product_detail', ($scope, $http)=>{
         console.log(err);
     });
     
+    //get colors
     $http({
         method: 'GET',
         url: 'http://127.0.0.1:8000/api/shopping/get-colors/'+productId

@@ -56,6 +56,7 @@ app.controller('checkout', ($scope, $http)=>{
                 url: 'http://127.0.0.1:8000/api/order',
                 data: payment
             }).then((res)=>{
+                console.log(res.data);
                 toastr.success('create order successfully');
                 $scope.carts=[];
                 $scope.payment();

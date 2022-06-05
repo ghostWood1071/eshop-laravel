@@ -17,20 +17,6 @@ class ProductController extends Controller
     public function index()
     {
         return DB::select('CALL get_products(?)',array(null));
-        // $products = Product::get();
-        // foreach($products as $product){
-        //     $product->category;
-        //     $colors = $product->colors;
-        //     foreach($colors as $color){
-        //         $color->sizes;
-        //     }
-        // }
-        // return $products;
-        // $products = Product::with('category')->get();
-        // foreach($products as $product){
-        //     $product->colors;
-        // }
-        // return $products;
     }
 
     //save row
@@ -126,11 +112,5 @@ class ProductController extends Controller
         return $colors;
     }
 
-    public function show($id){
-        //
-    }
-
-    public function edit($id){
-        //
-    }
+    
 }

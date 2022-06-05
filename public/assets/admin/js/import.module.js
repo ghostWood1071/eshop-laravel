@@ -130,7 +130,7 @@ app.controller('import', ($scope, $http)=>{
             $scope.details[index].state = 0;
     }
 
-    //avoid to edit when imported product
+    //avoid to edit size when imported product
     $scope.avoid = (id)=>{
         if (id==null)
             return '';

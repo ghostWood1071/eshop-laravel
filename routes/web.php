@@ -59,3 +59,7 @@ Route::get('/username', [AuthController::class, 'getUserName']);
 Route::get('/signin',function(){
     return view('shop.signin');
 });
+
+Route::get('/your-orders', function(){
+    return view('shop.order', ['header'=>true]);
+});

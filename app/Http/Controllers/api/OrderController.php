@@ -24,12 +24,6 @@ class OrderController extends Controller
     }
 
     
-    public function create()
-    {
-        //
-    }
-
-    
     public function store(Request $request)
     {
         $order = new Order;
@@ -65,18 +59,6 @@ class OrderController extends Controller
     }
 
     
-    public function show($id)
-    {
-        //
-    }
-
-    
-    public function edit($id)
-    {
-        //
-    }
-
-    
     public function update(Request $request)
     {
         foreach($request->all() as $up){
@@ -87,9 +69,4 @@ class OrderController extends Controller
         return $request;
     }
 
-    
-    public function destroy($id)
-    {
-        //
-    }
 }

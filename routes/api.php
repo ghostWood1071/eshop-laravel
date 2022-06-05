@@ -42,7 +42,8 @@ Route::get('/shopping/get-sizes/{id}',[ShoppingController::class, 'getSizes']);
 Route::get('/shopping/get-images/{id}',[ShoppingController::class, 'getImages']);
 Route::get('/shopping/get-price/{id}',[ShoppingController::class, 'getPrice']);
 Route::post('/shopping/create-user',[ShoppingController::class, 'createUser']);
-
+Route::get('/shopping/orders/{id}',[ShoppingController::class, 'getOrders']);
+Route::put('/shopping/orders/update',[ShoppingController::class, 'updateOrder']);
 Route::get('/dashboard/get-year-profit/{n}',[DashBoardController::class, 'getYearProfit']);
 Route::get('/dashboard/get-month-profit/{year}',[DashBoardController::class, 'getMonhtProfit']);
 Route::get('/dashboard/get-loyal-customer/{n}',[DashBoardController::class, 'getLoyalCustomer']);

@@ -18,13 +18,6 @@ class ImportController extends Controller
     {
         return Import::where('active', 1)->with('user')->get();
     }
-
-    
-    public function create()
-    {
-        //
-    }
-
     
     public function store(Request $request)
     {
@@ -107,22 +100,6 @@ class ImportController extends Controller
         return $import->with('user')->get()[0];
     }
 
-    
-    public function show($id)
-    {
-        //
-    }
-
-    
-    public function edit($id)
-    {
-        //
-    }
-
-    
-    
-
-    
     public function destroy($id)
     {
         $import = Import::find($id);

@@ -97,7 +97,6 @@
 </div>
 <!-- End Product Area -->
 
-
 <!-- Start Most Popular -->
 <div class="product-area most-popular section" >
     <div class="container">
@@ -236,8 +235,6 @@
 </section>
 <!-- End Shop Home List  -->
 
-
-
 <!-- Start Shop Services Area -->
 <section class="shop-services section home">
     <div class="container">
@@ -305,12 +302,9 @@
     </div>
 </section>
 <!-- End Shop Newsletter -->
-
 <!-- Modal end -->
 </div>
-	
 @stop
-
 @section('js')
     <script src="/assets/shop/module/category.module.js"></script>
     <script src="/assets/shop/module/index.module.js"></script>

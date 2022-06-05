@@ -25,7 +25,6 @@ app.controller('index', ($scope, $http)=>{
         })
     }
 
-
     //get categories
     $http({
         method: 'GET',
@@ -49,7 +48,6 @@ app.controller('index', ($scope, $http)=>{
         console.log(err);
     });
 
-    
     $http({
         method: 'GET',
         url: 'http://127.0.0.1:8000/api/shopping/get-sales/'+8
@@ -60,7 +58,6 @@ app.controller('index', ($scope, $http)=>{
         console.log(err);
     });
 
-    
     $scope.getPrice = (id)=>{
         $http({
             method: 'GET',
@@ -72,7 +69,6 @@ app.controller('index', ($scope, $http)=>{
             console.log(err);
         });
     }
-
     $scope.getSizes = (id)=>{
         $http({
             method: 'GET',
@@ -83,7 +79,6 @@ app.controller('index', ($scope, $http)=>{
             console.log(err);
         });
     }
-
     $scope.getColors = (id)=>{
         $http({
             method: 'GET',
@@ -97,7 +92,6 @@ app.controller('index', ($scope, $http)=>{
             console.log(err);
         });
     }
-
     $scope.getImages = (id)=>{
         $http({
             method: 'GET',
@@ -109,8 +103,6 @@ app.controller('index', ($scope, $http)=>{
             console.log(err);
         });
     }
-
-
     $scope.getProduct = (id)=>{
         $http({
             method: 'GET',

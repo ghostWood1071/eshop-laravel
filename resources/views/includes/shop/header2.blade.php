@@ -13,7 +13,7 @@
                 <div class="right-content">
                     <ul class="list-main">
                         <li><i class="ti-location-pin"></i> Store location</li>
-                        <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+                        <li><i class="fa fa-truck"></i> <a href="/your-orders">My orders</a></li>
                         <li><i class="ti-user"></i> <a href="/login">My account</a></li>
                         <li><a href="/cart" class="single-icon"><i class="ti-bag"></i>Cart<span ng-controller="cart">(@{{carts.length}})</span></a></li>
                         <li><i class="fa fa-power-off" aria-hidden="true"></i><a href="/logout">Logout</a></li>

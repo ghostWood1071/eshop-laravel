@@ -11,6 +11,7 @@ use App\Models\Price;
 use App\Models\Size;
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Order;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -29,7 +30,7 @@ class ShoppingController extends Controller
     } 
 
     public function getSales($n){
-        $colors = Color::where('active', 1)->where('discount', '>', '0')->get();
+        $colors = Color::where('active', 1)->where('discount', '>', '0')->limit($n)->get();
         foreach($colors as $color){
             $color->product;
             $color->price;
@@ -99,5 +100,25 @@ class ShoppingController extends Controller
         $user->save();
         return true;
     }
+    
+    public function getOrders($id){
+        $orders = Order::where('active', 1)->where('user_id', $id)->orderBy('order_date', 'desc')->get();
+        foreach($orders as $order){
+            $details = $order->details;
+            foreach($details as $detail){
+                $color = $detail->color;
+                $color->image;
+                $color->product;
+            }
+        }
+        return $orders;
+    }
 
+    public function updateOrder(Request $req){
+        $id = $req->id;
+        $order = Order::where('active', 1)->where('id', $id)->first();
+        $order->status = $req->status;
+        $order->save();
+        return $order;
+    }
 }

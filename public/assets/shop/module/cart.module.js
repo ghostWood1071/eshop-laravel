@@ -16,8 +16,6 @@ app.controller('cart', ($scope)=>{
         $scope.payment();
     }
     
-    
-
     $scope.addCart = (product, color, size, image, quantity)=>{
         console.log(color);
         let item = {

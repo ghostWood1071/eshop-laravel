@@ -63,6 +63,7 @@
                                     <option value="2">transporting</option>
                                     <option value="3">shipping</option>
                                     <option value="4">successful delivery</option>
+                                    <option value="5">cancel</option>
                                 </select>
                             </td>
                             <td style="width:100px; font-size: 16px; text-align:center">

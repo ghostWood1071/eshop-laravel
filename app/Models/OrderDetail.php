@@ -10,4 +10,8 @@ class OrderDetail extends Model
     use HasFactory;
     public $table='order_detail';
     public $incrementing = false;
+
+    public function color(){
+        return $this->belongsTo(Color::class, 'color_id', 'id');
+    }
 }
