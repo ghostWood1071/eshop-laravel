@@ -18,7 +18,7 @@
                         </select>
                     </div>
                     <div>
-                        <button class="btn btn-primary" ng-disabled="@{{o.status>1}}" ng-click="save($index)">Cancel</button>
+                        <button class="btn btn-primary" style="display: @{{o.status<2?'block':'none'}}" ng-disabled="@{{o.status>1}}" ng-click="save($index)">Cancel</button>
                     </div>
                 </div>
                 <table class="table">
