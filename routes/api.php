@@ -47,4 +47,4 @@ Route::put('/shopping/orders/update',[ShoppingController::class, 'updateOrder'])
 Route::get('/dashboard/get-year-profit/{n}',[DashBoardController::class, 'getYearProfit']);
 Route::get('/dashboard/get-month-profit/{year}',[DashBoardController::class, 'getMonhtProfit']);
 Route::get('/dashboard/get-loyal-customer/{n}',[DashBoardController::class, 'getLoyalCustomer']);
-
+Route::get('/dashboard/get-category-dist',[DashBoardController::class, 'getDistCategory']);

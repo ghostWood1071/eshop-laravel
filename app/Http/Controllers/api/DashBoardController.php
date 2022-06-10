@@ -18,4 +18,8 @@ class DashBoardController extends Controller
     public function getMonhtProfit($n){
         return DB::select('CALL analyst_month_profit(?)',array($n));
     }
+
+    public function getDistCategory(){
+        return DB::select('call analyst_sold_dist()', array());
+    }
 }

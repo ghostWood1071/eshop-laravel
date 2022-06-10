@@ -51,6 +51,16 @@ app.controller('dashboard', ($scope, $http)=>{
 
     $http({
         method: 'GET',
+        url: 'http://127.0.0.1:8000/api/dashboard/get-category-dist',
+    }).then((res)=>{
+        $scope.cateData = res.data.map(x=>x.dist);
+        $scope.categories = res.data.map(x=>x.name);
+    }, (err)=>{
+        
+    });
+
+    $http({
+        method: 'GET',
         url: 'http://127.0.0.1:8000/api/shopping/get-trending/null/10',
     }).then((res)=>{
         $scope.products = res.data;

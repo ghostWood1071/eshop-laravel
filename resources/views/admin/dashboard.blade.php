@@ -50,8 +50,26 @@
                 <canvas id="bar" class="chart chart-bar"chart-data="yearData" chart-labels="years"> chart-series="series"
                 </canvas>
             </div>
+            
+            <div class="col-xl-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Category distribution
+                    </div>
+                    <div class="card-body"><div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class="">
+                            </div>
+                        </div>
+                    <div class="chartjs-size-monitor-shrink">
+                        <div class="">
+                        </div>
+                    </div>
+                </div>
+                <canvas class="chart chart-doughnut" chart-data="cateData" chart-labels="categories"> chart-series="series"
+                </canvas>
             </div>
-            </div>
+
         </div>
         <div class="row" style="padding-right: 20px; padding-left:20px;">
             <div class="col-xl-12">

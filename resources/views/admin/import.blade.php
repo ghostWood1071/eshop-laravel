@@ -148,18 +148,18 @@
                                                 <th>Image</th>
                                                 <th>Name</th>
                                                 <th>Color</th>
-                                                <th>Action</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat = "p in products">
+                                            <tr ng-repeat = "p in products" ng-click="chooseProduct($index)">
                                                 <td style="width: 30px; text-align:center;">@{{$index+1}}</td>
                                                 <td><img style="width:40px;" src="/upload/@{{p.image[0].name}}" alt="" srcset=""></td>
                                                 <td>@{{p.product.name}}-@{{p.name}}</td>
                                                 <td><div style="width: 30px; height: 30px; background-color:@{{p.value}}"></div></td>
-                                                <td style="width:30px; font-size: 16px; text-align:center">
+                                                <!-- <td style="width:30px; font-size: 16px; text-align:center">
                                                     <input type="checkbox" ng-change="chooseProduct($index)" ng-model="p.check">
-                                                </td>
+                                                </td> -->
                                             </tr>
                                         </tbody>
                                     </table>

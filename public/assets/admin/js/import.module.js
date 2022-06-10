@@ -96,8 +96,7 @@ app.controller('import', ($scope, $http)=>{
     //choose product to import 
     $scope.chooseProduct =(index)=>{
         let product = $scope.products[index];
-        console.log(product);
-        if(product.check==true || product.check == null){
+        
             let detail = {
                 id: null,
                 product_index: index,
@@ -114,12 +113,6 @@ app.controller('import', ($scope, $http)=>{
                 state: 1
             }
             $scope.details.push(detail);
-            
-        }
-        else {
-            let i = $scope.details.findIndex(x=>x.product_index == index);
-            $scope.details.splice(i, 1);
-        }
         
     }
 

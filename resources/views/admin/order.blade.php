@@ -19,6 +19,9 @@
                         <input type="text" ng-model="txtSearch" style="height:36px;">
                         <button class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </div>
+                    <div>
+                        
+                    </div>
                     <div style="margin-top: 20px">
                         <select ng-model="maxSize" ng-change="load()">
                             <option value="10">10</option>

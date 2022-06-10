@@ -2,6 +2,7 @@ app.controller('checkout', ($scope, $http)=>{
     $scope.carts = [];
     $scope.total = 0;
     $scope.sale = 0;
+
     $scope.payment = ()=>{
         $scope.total = 0;
         $scope.sale = 0;
@@ -37,6 +38,7 @@ app.controller('checkout', ($scope, $http)=>{
     $scope.pay = async ()=>{
         if($scope.carts.length==0){
             toastr.warning("your carts is empty");
+            return;
         }
         try {
             let auth = await Authenthicate();

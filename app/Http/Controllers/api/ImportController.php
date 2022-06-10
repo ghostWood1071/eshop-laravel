@@ -16,7 +16,7 @@ class ImportController extends Controller
     
     public function index()
     {
-        return Import::where('active', 1)->with('user')->get();
+        return Import::where('active', 1)->with('user')->orderBy('import_date', 'desc')->get();
     }
     
     public function store(Request $request)

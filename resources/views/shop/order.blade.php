@@ -6,7 +6,7 @@
                 <div style="padding: 12px; display: flex; justify-content: space-between">
                     <div>
                         Address: @{{o.address}} <br>
-                        Order date: @{{o.order_date | date}} <br>
+                        Order date: @{{o.order_date | date:'dd-MM-yyyy'}} <br>
                         Total: @{{o.total_price | number}} VND <br>
                         Status: <select ng-model="o.status" style="margin-bottom: 10px" ng-disabled="true">
                             <option value="0">ordered</option>
